@@ -1,6 +1,6 @@
 # Insurance Claims Analysis: Executive Summary
 
-> **Portfolio Project Note:** This is a portfolio project demonstrating end-to-end analysis skills. The scenario and recommendations are based on a realistic dataset I analyzed independently.
+> **Portfolio Project Note:** This is a portfolio project demonstrating end-to-end analysis skills. The company and scenario are fictional, and the dataset is synthetic (generated with `generate_portfolio_data.py`) to mimic realistic claims patterns.
 
 **Prepared for:** VP of Claims Operations  
 **Date:** November 7, 2026  
@@ -24,6 +24,8 @@ Customers who file claims digitally experience significantly better service acro
 - **2 days faster settlement** (1.8 to 2.6 days improvement)
 - **Higher satisfaction scores** (0.3 to 0.6 points higher on our 10-point scale)
 
+One caveat: customers choose how they file, so part of this gap may come from who chooses digital, not from digital filing itself.
+
 Currently, 60% of claims are filed digitally. The remaining 40% who still call represent an opportunity to improve their experience.
 
 ### 2. New Portal Test Was Successful
@@ -41,15 +43,15 @@ We can be 95% confident the true improvement is between 0.39 and 0.67 points. Th
 Our analysis identified the factors that most influence customer satisfaction. The top drivers are:
 
 **Largest impact:**
-1. **Response time** – How quickly an adjuster makes first contact
-2. **Adjuster experience** – Years of experience handling claims
+1. **Adjuster experience** – Years of experience handling claims
+2. **Response time** – How quickly an adjuster makes first contact
 3. **Settlement speed** – Days from filing to resolution
 
 **Moderate impact:**
 4. **New portal** – Using the improved digital interface
 5. **Digital filing** – Overall benefit through faster processing
 
-Response time has the single largest effect. Each hour of delay costs us about 0.3 points on our satisfaction scale. For context, cutting average response time from 3 hours to 1 hour would improve satisfaction by roughly 0.6 points—more than any other single intervention.
+Adjuster experience and response time are nearly tied at the top, and response time is the one we can change fastest. Each hour of delay costs us about 0.3 points on our satisfaction scale. For context, cutting average response time from 3 hours to 1 hour would improve satisfaction by roughly 0.6 points—more than any other single intervention.
 
 ---
 
@@ -65,7 +67,7 @@ The test results are clear. The new portal improves satisfaction by about half a
 
 **2. Reduce initial response time**
 
-This is our biggest lever for improving satisfaction. Focus on:
+This is our biggest operational lever for improving satisfaction. Focus on:
 - Faster adjuster assignment
 - Automated acknowledgment when claims are filed
 - Clear communication about when customers will hear from us
@@ -76,7 +78,7 @@ Even small improvements here (15-30 minutes faster) will have measurable impact 
 
 **3. Accelerate settlement times**
 
-After response time, this is the next biggest operational factor. Look for bottlenecks in our approval and payment processes. Reducing average settlement time by 2-3 days would improve satisfaction by about 0.2 to 0.3 points.
+After response time, this is the next biggest operational factor. Look for bottlenecks in our approval and payment processes. Reducing average settlement time by 2-3 days would improve satisfaction by about 0.15 to 0.2 points.
 
 **4. Promote digital filing more aggressively**
 
@@ -94,7 +96,7 @@ Experienced adjusters deliver better satisfaction. This means:
 - **Training:** Accelerate skill development for newer adjusters
 - **Assignment:** Route complex claims to more experienced adjusters
 
-Each additional year of adjuster experience improves satisfaction by 0.15 points. An adjuster with 10 years of experience will consistently deliver satisfaction scores about 1 point higher than a new adjuster, all else equal.
+Each additional year of adjuster experience improves satisfaction by about 0.16 points. An adjuster with 10 years of experience will consistently deliver satisfaction scores about 1.5 points higher than a new adjuster, all else equal.
 
 ---
 

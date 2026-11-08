@@ -124,7 +124,7 @@ df = pd.DataFrame({
 })
 
 # Save to CSV
-output_path = 'claims_portfolio_data.csv'
+output_path = 'claims_data.csv'
 df.to_csv(output_path, index=False)
 
 print(f"\n✓ Dataset created: {len(df)} claims")

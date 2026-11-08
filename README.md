@@ -2,6 +2,8 @@
 
 End-to-end statistical analysis of 1,243 insurance claims to identify opportunities for improving operational efficiency and customer satisfaction.
 
+> **Note:** The dataset is synthetic. I generated it with [`generate_portfolio_data.py`](generate_portfolio_data.py) to mimic realistic claims patterns, so I could practice the full analysis workflow end to end.
+
 ## What I Did
 
 Analyzed insurance claims data to answer four business questions:
@@ -17,7 +19,7 @@ Analyzed insurance claims data to answer four business questions:
 
 ![Digital filing impact on key metrics](images/digital_filing_impact.png)
 
-Digital filing improves response time by **37%**, settlement time by **~2 days**, and satisfaction by **0.3-0.6 points** compared to phone filing.
+Digital filers get a **37%** faster response, settlement **~2 days** sooner, and satisfaction **0.3-0.6 points** higher than phone filers. Since customers choose how they file, this is an association, not a proven cause.
 
 ### New Portal A/B Test: Clear Win
 
@@ -25,11 +27,11 @@ Digital filing improves response time by **37%**, settlement time by **~2 days**
 
 The new portal increased satisfaction by **+0.53 points** (95% CI: 0.39-0.67), a **7.3% improvement**. This supports full rollout.
 
-### Response Time is the Strongest Satisfaction Driver
+### Adjuster Experience and Response Time Drive Satisfaction
 
 ![Satisfaction drivers analysis](images/satisfaction_drivers.png)
 
-Response time has the largest impact on satisfaction, followed by adjuster experience and settlement speed.
+Adjuster experience and response time have the largest impact on satisfaction (nearly tied), followed by settlement speed.
 
 ## Files
 
@@ -37,6 +39,8 @@ Response time has the largest impact on satisfaction, followed by adjuster exper
 ├── analysis.ipynb           # Main analysis with all code and findings
 ├── executive_summary.md     # Non-technical summary for stakeholders
 ├── claims_data.csv         # Dataset (1,243 claims)
+├── generate_portfolio_data.py  # Script that generates the synthetic dataset
+├── requirements.txt        # Python dependencies
 ├── images/                 # Visualizations
 └── README.md               # This file
 ```
@@ -58,18 +62,18 @@ Distribution analysis, summary stats, and correlation heatmap to identify relati
 
 ### 2. Hypothesis Testing
 
-- Welch's t-tests for satisfaction and settlement days
+- Welch's t-tests (two-sided) for satisfaction and settlement days
 - Mann-Whitney U test for response time (right-skewed data)
 - Calculated effect sizes and 95% confidence intervals
 
 ### 3. A/B Test Evaluation
 
-Compared treatment (n=605) vs. control (n=638) groups using t-tests with secondary Mann-Whitney validation.
+Compared treatment (n=605) vs. control (n=638) groups using a two-sided Welch's t-test with secondary Mann-Whitney validation.
 
 ### 4. Regression Analysis
 
 Built two models:
-- **Model 1:** Full model to identify direct effects
+- **Model 1:** Full model to identify direct effects (controlling for claim complexity)
 - **Model 2:** Reduced model to capture total effect of digital filing
 
 Validated assumptions with VIF checks, residual plots, and Q-Q plots.
@@ -90,16 +94,16 @@ Validated assumptions with VIF checks, residual plots, and Q-Q plots.
 - Lift: +0.53 points (+7.3%)
 
 **Regression Model:**
-- R² = 0.58 (explains 58% of satisfaction variance)
-- Top drivers: response time (-0.52), adjuster experience (+0.51), settlement days (-0.44)
+- R² = 0.60 (explains 60% of satisfaction variance)
+- Top drivers (per standard deviation): adjuster experience (+0.54), response time (-0.50), settlement days (-0.29)
 
 ## Recommendations
 
 1. **Roll out the new portal** - Clear positive impact
-2. **Reduce response time** - Largest satisfaction driver
-3. **Reduce settlement days** - Second priority
-4. **Promote digital filing** - Improves all metrics
-5. **Invest in adjuster experience** - Training and retention
+2. **Reduce response time** - Biggest operational lever
+3. **Invest in adjuster experience** - Largest driver; training and retention
+4. **Reduce settlement days** - Next priority
+5. **Promote digital filing** - Associated with better results on all metrics
 
 Full details: [executive_summary.md](executive_summary.md)
 
@@ -111,7 +115,7 @@ git clone https://github.com/jscode-1302/insurance-claims-optimization.git
 cd insurance-claims-optimization
 
 # Install dependencies
-pip install pandas duckdb matplotlib seaborn scipy pingouin statsmodels jupyter
+pip install -r requirements.txt
 
 # Run notebook
 jupyter notebook analysis.ipynb
